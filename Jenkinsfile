@@ -10,20 +10,28 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    dockerImage = docker.build('todo-app-node')
-                }
+                echo "Building docker image..."
+                sh "docker build -t todo-app-node ."
+                
+                // script {
+                //     dockerImage = docker.build('todo-app-node')
+                // }
             }
         }
 
 
         stage('Run Container') {
             steps {
-                script {
-                    sh 'docker stop todoapp || true'
-                    sh 'docker rm todoapp || true'
-                    sh 'docker run -d -p 3000:3000 --name todoapp todo-app-node'
-                }
+                echo "Running the docker container..."
+                sh 'docker stop todoapp || true'
+                sh 'docker rm todoapp || true'
+                sh 'docker run -d -p 3000:3000 --name todoapp todo-app-node'
+
+                // script {
+                //     sh 'docker stop todoapp || true'
+                //     sh 'docker rm todoapp || true'
+                //     sh 'docker run -d -p 3000:3000 --name todoapp todo-app-node'
+                // }
             }
         }
     }
