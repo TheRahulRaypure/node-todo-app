@@ -10,9 +10,9 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                echo "Building docker image..."
+                echo "Building the docker image..."
                 sh "docker build -t todo-app-node ."
-                
+
                 // script {
                 //     dockerImage = docker.build('todo-app-node')
                 // }
