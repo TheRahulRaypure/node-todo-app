@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/TheRahulRaypure/node-todo-app.git'
+                git url: 'https://github.com/TheRahulRaypure/node-todo-app.git', branch: 'main'
             }
         }
 
